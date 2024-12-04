@@ -1,0 +1,2 @@
+Invoking command in '/home/robousr/ROS2Dev/robot_2025_ws/build/practical_description': /usr/bin/cmake /home/robousr/ROS2Dev/robot_2025_ws/src/practical_description -DCMAKE_INSTALL_PREFIX=/home/robousr/ROS2Dev/robot_2025_ws/install/practical_description
+Invoked command in '/home/robousr/ROS2Dev/robot_2025_ws/build/practical_description' returned '1': /usr/bin/cmake /home/robousr/ROS2Dev/robot_2025_ws/src/practical_description -DCMAKE_INSTALL_PREFIX=/home/robousr/ROS2Dev/robot_2025_ws/install/practical_description

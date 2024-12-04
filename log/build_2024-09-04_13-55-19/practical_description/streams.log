@@ -1,0 +1,45 @@
+[0.058s] Invoking command in '/home/robousr/ROS2Dev/robot_2025_ws/build/practical_description': /usr/bin/cmake /home/robousr/ROS2Dev/robot_2025_ws/src/practical_description -DCMAKE_INSTALL_PREFIX=/home/robousr/ROS2Dev/robot_2025_ws/install/practical_description
+[0.605s] -- The C compiler identification is GNU 11.4.0
+[1.188s] -- The CXX compiler identification is GNU 11.4.0
+[1.236s] -- Detecting C compiler ABI info
+[1.505s] -- Detecting C compiler ABI info - done
+[1.529s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.536s] -- Detecting C compile features
+[1.540s] -- Detecting C compile features - done
+[1.559s] -- Detecting CXX compiler ABI info
+[1.834s] -- Detecting CXX compiler ABI info - done
+[1.853s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.853s] -- Detecting CXX compile features
+[1.854s] -- Detecting CXX compile features - done
+[1.892s] -- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+[3.272s] -- Found Python3: /home/robousr/.pyenv/shims/python3 (found version "3.10.12") found components: Interpreter 
+[3.739s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[4.024s] Error parsing '/home/robousr/ROS2Dev/robot_2025_ws/src/practical_description/package.xml':
+[4.154s] Traceback (most recent call last):
+[4.154s]   File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 150, in <module>
+[4.155s]     main()
+[4.155s]   File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 53, in main
+[4.155s]     raise e
+[4.157s]   File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 49, in main
+[4.157s]     package = parse_package_string(
+[4.158s]   File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 788, in parse_package_string
+[4.158s]     pkg.validate(warnings=warnings)
+[4.158s]   File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 330, in validate
+[4.159s]     raise InvalidPackage('\n'.join(errors), self.filename)
+[4.159s] catkin_pkg.package.InvalidPackage: Error(s) in package '/home/robousr/ROS2Dev/robot_2025_ws/src/practical_description/package.xml':
+[4.159s] Invalid email "Castillo-16" for person "robousr"
+[4.198s] [31mCMake Error at /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):
+[4.199s]   execute_process(/home/robousr/.pyenv/shims/python3
+[4.199s]   /opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py
+[4.199s]   /home/robousr/ROS2Dev/robot_2025_ws/src/practical_description/package.xml
+[4.200s]   /home/robousr/ROS2Dev/robot_2025_ws/build/practical_description/ament_cmake_core/package.cmake)
+[4.200s]   returned error code 1
+[4.200s] Call Stack (most recent call first):
+[4.201s]   /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+[4.202s]   /opt/ros/humble/share/ament_lint_auto/cmake/ament_lint_auto_find_test_dependencies.cmake:31 (ament_package_xml)
+[4.202s]   CMakeLists.txt:28 (ament_lint_auto_find_test_dependencies)
+[4.202s] 
+[4.203s] [0m
+[4.203s] -- Configuring incomplete, errors occurred!
+[4.203s] See also "/home/robousr/ROS2Dev/robot_2025_ws/build/practical_description/CMakeFiles/CMakeOutput.log".
+[4.210s] Invoked command in '/home/robousr/ROS2Dev/robot_2025_ws/build/practical_description' returned '1': /usr/bin/cmake /home/robousr/ROS2Dev/robot_2025_ws/src/practical_description -DCMAKE_INSTALL_PREFIX=/home/robousr/ROS2Dev/robot_2025_ws/install/practical_description

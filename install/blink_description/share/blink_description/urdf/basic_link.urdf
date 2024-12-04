@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="basic_link">
+
+    <!-- Definición del "mundo", que es el marco de referencia principal para el robot -->
+    <link name="world">
+    </link>
+
+    <!-- Creación de una unión fija entre el "mundo" y el eslabón base del robot -->
+    <joint name="world_to_base_link" type="fixed">
+        <!-- El eslabón "world" será el padre de esta unión -->
+        <parent link="world"/>
+        <!-- El eslabón "base_link" será el hijo, conectado al eslabón padre -->
+        <child link="base_link"/>
+        <!-- Posición y orientación de la junta en relación con los ejes X, Y y Z -->
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    </joint>
+    
+    <!-- Definición del eslabón base del robot, el cual estará conectado al mundo -->
+    <link name="base_link">
+        <!-- Información visual del eslabón base, es decir, cómo se verá en la simulación -->
+        <visual>
+            <!-- Posición inicial y orientación del eslabón visual respecto a su propio sistema de coordenadas -->
+            <origin xyz="0.0 0.0 0.075" rpy="0.0 0.0 0.0"/>
+            <!-- Descripción de la geometría del eslabón para la representación visual -->
+            <geometry>
+                <box size="0.1 0.12 0.15"/>             
+            </geometry>
+            <!-- Definición del material del eslabón, en este caso un color gris -->
+            <material name="grey">
+                <color rgba="0.5 0.5 0.5 1.0" />
+            </material>      
+        </visual>
+        <!-- Sección que describe las propiedades de colisión del eslabón base -->
+        <collision>
+            <!-- Posición de la geometría de colisión respecto al sistema de coordenadas del eslabón -->
+            <origin xyz="0.0 0.0 0.075" rpy="0.0 0.0 0.0"/>
+            <!-- Geometría utilizada para los cálculos de colisión; coincide con la geometría visual -->
+            <geometry>
+                <box size="0.1 0.12 0.15"/>             
+            </geometry>          
+        </collision>
+        <!-- Propiedades inerciales del eslabón, importantes para la dinámica del sistema -->
+        <inertial>
+            <!-- Masa del eslabón base -->
+            <mass value="0.5"/>
+            <!-- Posición del centro de masa respecto al eslabón -->
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <!-- Matriz de inercia en torno al centro de masa del eslabón, usada para cálculos de movimiento -->
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/> 
+        </inertial>
+        
+    </link>
+
+    <!-- Definición del primer eslabón móvil del robot -->
+    <link name="link_1">
+        <!-- Aspecto visual del eslabón, que se verá en el simulador -->
+        <visual>
+            <!-- Establece la posición y orientación del eslabón visual en relación con su origen -->
+            <origin xyz="0.025 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <!-- Geometría del eslabón, que en este caso es una caja -->
+            <geometry>
+                <box size="0.05 0.05 0.5"/>             
+            </geometry>
+            <!-- Material usado para el eslabón; en este caso, es un color azul claro -->
+            <material name="light_blue">
+                <color rgba="0.0 0.75 1.0 1.0" />
+            </material>      
+        </visual>
+        <!-- Define las propiedades de colisión de este eslabón -->
+        <collision>
+            <!-- Posición de la geometría de colisión respecto al origen del eslabón -->
+            <origin xyz="0.025 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <!-- Geometría usada para las interacciones físicas en simulación, como colisiones -->
+            <geometry>
+                <box size="0.05 0.05 0.5"/>             
+            </geometry>          
+        </collision>
+        <!-- Sección que describe la masa y otras propiedades dinámicas del eslabón -->
+        <inertial>
+            <!-- Masa asignada al eslabón móvil -->
+            <mass value="0.3"/>
+            <!-- Ubicación del sistema inercial del eslabón, que normalmente coincide con su centro de masa -->
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <!-- La matriz de inercia en el centro de masa, usada para el cálculo de dinámica -->
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/> 
+        </inertial>
+    </link>
+
+    <!-- Definición de la junta que conecta el eslabón base con el primer eslabón móvil -->
+    <joint name="base_link_to_link_1" type="revolute">
+        <!-- Define el eslabón padre (base) de esta junta -->
+        <parent link="base_link"/>
+        <!-- Define el eslabón hijo (primer eslabón móvil) conectado a la base -->
+        <child link="link_1"/>
+        <!-- Eje sobre el cual se permite el movimiento de rotación de la junta -->
+        <axis xyz="1 0 0"/>
+        <!-- Límites de la junta en términos de posición angular, velocidad y esfuerzo máximo permitido -->
+        <limit lower="-3.14159" upper="3.14159" velocity="50.0" effort="1000.0"/>
+        <!-- Posición de la junta en el espacio del eslabón base -->
+        <origin xyz="0.05 0 0.15" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Definición del segundo eslabón del robot -->
+    <link name="link_2">
+        <!-- Parte visual que describe cómo se verá el segundo eslabón en el simulador -->
+        <visual>
+            <!-- Posición y orientación del eslabón visual respecto a su origen -->
+            <origin xyz="0.030 0.00 0.25" rpy="0.0 0.0 0.0"/>
+            <!-- Geometría usada para la representación gráfica del eslabón, en este caso una caja -->
+            <geometry>
+                <box size="0.05 0.05 0.5"/>             
+            </geometry>
+            <!-- El color naranja que representará este eslabón en el simulador -->
+            <material name="orange">
+                <color rgba="1.0 0.5 0.0 1.0" />
+            </material>      
+        </visual>
+        <!-- Definición de las propiedades de colisión del eslabón, importante para la simulación física -->
+        <collision>
+            <!-- Establece la posición de la geometría de colisión del eslabón -->
+            <origin xyz="0.030 0.05 0.25" rpy="0.0 0.0 0.0"/>
+            <!-- Geometría utilizada para detectar colisiones durante la simulación -->
+            <geometry>
+                <box size="0.05 0.05 0.5"/>             
+            </geometry>          
+        </collision>
+        <!-- Propiedades inerciales necesarias para los cálculos dinámicos en simulación -->
+        <inertial>
+            <!-- Masa del segundo eslabón -->
+            <mass value="0.3"/>
+            <!-- Posición del centro de masa del eslabón -->
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <!-- Matriz de inercia, que se usa para calcular cómo responde el eslabón al movimiento -->
+            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/> 
+        </inertial>
+    </link>
+
+    <!-- Junta revoluta que conecta el primer eslabón móvil con el segundo -->
+    <joint name="link_1_to_link_2" type="revolute">
+        <!-- Define el primer eslabón como el padre en esta conexión -->
+        <parent link="link_1"/>
+        <!-- El segundo eslabón será el hijo conectado a la junta -->
+        <child link="link_2"/>
+        <!-- Eje de rotación permitido para la junta (en este caso, alrededor del eje X) -->
+        <axis xyz="1 0 0"/>
+        <!-- Límites de movimiento angular, velocidad y esfuerzo máximo que puede soportar la junta -->
+        <limit lower="-3.14159" upper="3.14159" velocity="50.0" effort="1000.0"/>
+        <!-- Posición de la junta respecto al primer eslabón móvil -->
+        <origin xyz="0.05 0 0.5" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Definición de las propiedades en Gazebo para el simulador -->
+    <gazebo reference="base_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="link_1">
+        <material>Gazebo/LightBlue</material>
+    </gazebo>
+
+    <!-- Fin de las propiedades relacionadas con Gazebo -->
+
+    <!-- Configuración de los elementos de control del robot -->
+    <transmission name ="trans_1">
+        <!-- Transmisión simple que conecta un motor a una junta -->
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_link_to_link_1">
+            <!-- Interfaz de hardware para el control de la posición de la junta -->
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <!-- Actuador que impulsa la junta -->
+        <actuator name="motor_1">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <!-- Plugin que publica el estado de la junta en el simulador Gazebo -->
+    <gazebo>
+        <plugin name="joint_state_publisher_controller"
+                filename="libgazebo_ros_joint_state_publisher.so">
+            <!-- Tasa de actualización del estado de la junta (en Hz) -->
+            <update_rate>10</update_rate>
+            <!-- Nombre de la junta cuyo estado se publicará -->
+            <joint_name>base_link_to_link_1</joint_name>
+        </plugin>
+    </gazebo>
+
+    <!-- Plugin para el control de trayectoria de la junta en Gazebo -->
+    <gazebo>
+        <plugin name="joint_pose_trajectory_controller"
+                filename="libgazebo_ros_joint_pose_trajectory.so">
+            <!-- Frecuencia de actualización del controlador -->
+            <update_rate>2</update_rate>
+        </plugin>
+    </gazebo>
+
+    <!-- Fin de la sección de control del robot -->
+
+</robot>
